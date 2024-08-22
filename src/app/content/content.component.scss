@@ -1,0 +1,94 @@
+  
+
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: bold;
+    padding: 10px 15px;
+  }
+  
+  .btn-link {
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #000;
+    display: block;
+    width: 100%;
+  }
+  
+  .btn-link:hover {
+    text-decoration: none;
+  }
+  
+  .list-group-item {
+    display: flex;
+    align-items: center;
+  }
+
+  
+  .list-group-item i {
+    margin-right: 10px;
+  }
+  
+  .list-group-item.active {
+    background-color: #f8f9fa;
+    color: #495057;
+  }
+  
+
+  .sort-btn{
+    height: 40px;
+    width: 61px;
+    border: none;
+    border-radius: 10px;
+    background-color: #f70933e6;
+    color: white;
+    font-weight: bold;
+  }
+
+
+
+  // Offcanvas   CSS
+
+  .offcanvas-end {
+    width: 300px;
+  }
+  
+  .offcanvas-header {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  
+  .btn-group .btn {
+    width: 48%;
+    margin: 10px;
+  }
+  
+  .btn-group .btn + .btn {
+    margin-left: 4%;
+  }
+  
+  .text-danger {
+    color: #d9534f;
+  }
+  
+  .mt-auto {
+    margin-top: auto;
+  }
+  
+  .btn-danger {
+    background-color: #a9410e;
+    border-color: #a9410e;
+  }
+  
+  .btn-outline-secondary.active {
+    background-color: #a9410e;
+    color: white;
+    border-color: #a9410e;
+  }
+  

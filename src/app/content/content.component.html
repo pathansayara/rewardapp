@@ -1,0 +1,104 @@
+<div class="container mt-4">
+    <!-- Search Bar -->
+    <div class="search-bar mb-4">
+        <label for="" style="font-weight: bold;padding: 5px 10px;">Search</label>
+      <input type="text" class="form-control rounded-pill py-2 px-4" placeholder="Search..." [(ngModel)]="searchTerm">
+    </div>
+    
+    <div class="row">
+      <!-- Categories Section -->
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header font-weight-bold">
+            Categories
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center ">
+              <span>
+                <i class="fas fa-chevron-down text-secondary"></i> e-Voucher
+              </span>
+              <span class="badge bg-danger rounded-circle text-white"><i class="fas fa-check-circle"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center ">
+              <span>
+                <i class="fas fa-chevron-down text-secondary"></i> Products
+              </span>
+              <span class="badge bg-secondary rounded-circle"><i class="fas fa-check-circle"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>
+                <i class="fas fa-chevron-down text-secondary"></i> Evergreen
+              </span>
+              <span class="badge bg-secondary rounded-circle"><i class="fas fa-check-circle"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>
+                <i class="fas fa-chevron-down text-secondary"></i> Fashion & Retail
+              </span>
+              <span class="badge bg-secondary rounded-circle"><i class="fas fa-check-circle"></i></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Items Section -->
+      <div class="col-md-9">
+        <div class="d-flex justify-content-between mb-2">
+          <div>
+            <span class="badge bg-primary">Applied Filters: e-Voucher</span>
+            <button class="btn btn-link text-secondary" (click)="clearFilters()">Clear Filters</button>
+          </div>
+          <button class="sort-btn" data-bs-toggle="offcanvas" data-bs-target="#sortOffcanvas">Sort</button>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4" *ngFor="let item of filteredItems">
+            <div class="card h-100" style="box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+              <img [src]="item.display_img_url || 'assets/placeholder.png'" class="card-img-top" alt="Item Image" style="height: 180px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <p class="card-text text-muted">{{ item.points }} Points</p>
+                <p class="card-text text-danger" *ngIf="item.quantity > 0 && item.quantity <= item.low_quantity">
+                  ON High Demand (Only {{ item.quantity }} rewards left)
+                </p>
+                <p class="card-text text-success" *ngIf="item.quantity === 0" style="font-weight: bold;">
+                  Out of Stock
+                </p>
+              </div>
+              <div class="card-footer bg-white">
+                <small class="text-muted">Valid Until {{ item.valid_until | date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Offcanvas for Sorting and Filtering -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="sortOffcanvas">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Filter By</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="d-flex justify-content-between mb-3 pt-4">
+        <h6 class="text-muted">Sort</h6>
+        <a href="#" class="text-danger" (click)="resetAll()">Reset All</a>
+      </div>
+      <div class="mb-3">
+        <div class="btn-group w-100" role="group">
+          <input type="radio" class="btn-check" name="sortOptions" id="sortAsc" autocomplete="off" (click)="selectSort('asc')">
+          <label class="btn btn-outline-secondary" for="sortAsc">A to Z</label>
+  
+          <input type="radio" class="btn-check" name="sortOptions" id="sortDesc" autocomplete="off" (click)="selectSort('desc')">
+          <label class="btn btn-outline-secondary" for="sortDesc">Z to A</label>
+        </div>
+      </div>
+  
+      <div class="mt-auto" style="margin-bottom: 210%;">
+        <button class="btn btn-danger w-100" (click)="applySort()">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  
